@@ -4,20 +4,20 @@ FROM node:18.15.0-alpine
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and yarn.lock to the container
-COPY package.json yarn.lock ./
+# Copy package.json and package-lock.json to the container
+COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN yarn install --frozen-lockfile
-
-# Install dependencies
-RUN yarn install
+RUN npm install
 
 # Copy the app's source code to the container
 COPY . .
 
 # Build the React app
-RUN yarn build
+RUN npm run build
+
+# Install serve to serve the build directory
+RUN npm install -g serve
 
 # Serve the build
-CMD ["npx", "serve", "-s", "build"]
+CMD ["serve", "-s", "build"]
