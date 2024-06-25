@@ -13,6 +13,8 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+RUN npm run build
+
 # Expose the port on which the application runs (if applicable)
 EXPOSE 8080
 
