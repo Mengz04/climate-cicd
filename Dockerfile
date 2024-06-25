@@ -1,31 +1,23 @@
-# Stage 1: Build the React app
-FROM node:14-alpine as build
+# Use Node.js as the base image
+FROM node:18.15.0-alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Copy package.json and yarn.lock to the container
+COPY package.json yarn.lock ./
 
 # Install dependencies
-RUN npm cache clean --force && npm install
+RUN yarn install --frozen-lockfile
 
-# Copy the rest of the application code to the working directory
+# Install dependencies
+RUN yarn install
+
+# Copy the app's source code to the container
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN yarn build
 
-# Stage 2: Serve the React app with Nginx
-FROM nginx:alpine
-
-# Copy build files from the previous stage
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-
-# Add the custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Default command to run Nginx (no need to specify CMD as nginx image has default CMD)
+# Serve the build
+CMD ["npx", "serve", "-s", "build"]
