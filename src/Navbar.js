@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import {useState } from 'react';
 import Logo from './img/fire_logo.png';
 import Profile from './img/profile.jpeg'

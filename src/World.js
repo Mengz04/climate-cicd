@@ -17,6 +17,7 @@ export default function World(props) {
   const shiftFactor = props.isMobile ? 0 : 0.4;
   const shiftAmmount = shiftFactor * w;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleResize = () => {
     setWidth(window.innerWidth);
     setHeight(() => { return props.isMobile ? window.innerHeight/1.5 : window.innerHeight });
@@ -52,7 +53,7 @@ export default function World(props) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [props.countryData, props.initialWidth]);
+  }, [handleResize, props.countryData, props.initialWidth, props.isMobile]);
 
   function colorMapping({ properties: d }) {
     return `${
