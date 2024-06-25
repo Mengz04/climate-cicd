@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -48,6 +47,7 @@ import {
           text: `${data.properties.ADMIN} annual surface temperature`,
         },
       },
+      // eslint-disable-next-line no-dupe-keys
       responsive: true,
       interaction: {
         mode: 'index',

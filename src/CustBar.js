@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -68,6 +67,7 @@ export default function CustBar({ data, forceRender }) {
         text: 'Annual mean difference from 1900-2013 mean',
       },
     },
+    // eslint-disable-next-line no-dupe-keys
     responsive: true,
     interaction: {
       mode: 'index',

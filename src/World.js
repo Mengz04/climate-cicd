@@ -5,6 +5,7 @@ import { scaleLinear } from "d3-scale";
 import { SPACE_BG, GLOBE_TEXTURE } from "./constants";
 
 export default function World(props) {
+  // eslint-disable-next-line no-unused-vars
   const [colorScale, setColorScale] = useState(null);
   const [countries, setCountries] = useState({ features: [] });
   const globeElm = useRef();

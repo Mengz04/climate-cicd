@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import {useState } from 'react';
 import Logo from './img/fire_logo.png';
 import Profile from './img/profile.jpeg'
 import { GH_CONT, LINKEDIN_CONT, EMAIL_CONT } from './constants';
